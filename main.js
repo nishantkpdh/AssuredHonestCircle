@@ -1,27 +1,18 @@
-//call() apply() bind()
-
-
-const player1={
-  name:'abc',
-  skill:'xyz',
-  life:2,
-  resetlife:function(newdata){
-    return this.life+=newdata;
+//Scope Chain
+let thirdfun=(value)=>{
+  if(value){
+    return console.log("u are correct");
+  }else{
+    return console.log('u are not correct');
   }
 }
-
-const player2={
-  name:'def',
-  skill:'stu',
-  life:1
+let secondfun=(len)=>{
+  const check=len>6?true:false;
+  return thirdfun(check)
+}
+let firstfun=(value)=>{
+  const len=value.length;
+  return secondfun(len);
 }
 
-
-console.log(player2)
-player1.resetlife.call(player2,5);
-console.log(player2)
-const newplayer2=player1.resetlife.bind(player2,3);
-newplayer2()
-console.log(player2)
-
-
+firstfun("nisht")
