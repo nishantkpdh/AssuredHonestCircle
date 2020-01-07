@@ -20,3 +20,8 @@ const player2={
 console.log(player2)
 player1.resetlife.call(player2,5);
 console.log(player2)
+const newplayer2=player1.resetlife.bind(player2,3);
+newplayer2()
+console.log(player2)
+
+
