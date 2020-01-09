@@ -1,34 +1,44 @@
-//call() apply() bind()
-
-// const num=100
-// function Value(){
-//   console.log(`value is ${num}`)
-//   console.log(`value is ${this.num}`)
+// // Function.prototype.bind = function(whoIsCallingMe){
+//   const self = this;
+//   return function(){
+//     return self.apply(whoIsCallingMe, arguments);
+//   };
 // }
-// function Getsamenumber(){
-//   console.log(`value is same ${this.num}`)
-// }
-// var obj1 = { num : 200 , value: Getsamenumber };
-// obj1.value()
 
 
-// const obj={
-//   name:"abc",
-//   dance:function(){
-//     console.log(this);
-//     var cook=(function(){
-//       console.log(this)
-//     }.bind(this))();
-//     cook;
-//   }
-// }
-// obj.dance()
+function checkuseridentity(){
 
-Date.prototype.lastyear=function(){
-  return this.getFullYear()-1
+  var temp={}
+  function passportno () {
+    if(this.passport.length>6){
+      console.log(this.name +' has valid passport');
+    }
+    else
+    {
+      console.log("not a valid passport");
+    }
+  }
+ 
+  const userdetail=(detail)=>{
+    if(detail.name===null){
+      return "invalid name";
+    }
+    if(detail.passport===null){
+      return "invalid passportno";
+    }
+    else{
+      temp=Object.assign({},detail);    
+      let input= passportno.bind(temp);
+      input();
+      return true;
+    }
+  }
+  return{
+    userdetail:userdetail,
+  }
 }
-var data=new Date('1990-10-10').lastyear();
-console.log(data);
 
 
+const test= checkuseridentity();
+test.userdetail({name:'xyx',passport:'RJ3dsds2'})
 
